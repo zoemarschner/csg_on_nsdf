@@ -40,8 +40,8 @@ def swept_volume_combined_loss(str_neg, str_pos, lambdas, dim=2):
 
 		SV_neg_loss = (lambdas[0] * E_SV_neg).mean()
 		SV_pos_loss  = (lambdas[1] * E_SV_pos).mean()
-		eik_loss = (lambdas[2] * E_CP).mean()
-		cp_loss   = (lambdas[3] * E_eik).mean()
+		cp_loss = (lambdas[2] * E_CP).mean()
+		eik_loss   = (lambdas[3] * E_eik).mean()
 
 		loss = SV_neg_loss + SV_pos_loss + eik_loss + cp_loss
 
@@ -63,8 +63,8 @@ def csg_combined_loss(strength, lambdas, dim=2):
 		E_eik = eikonal_loss(pts, model, pre_eval=pre_eval, pre_eval_grad=pre_eval_grad, dim=dim)
 
 		csg_loss = (lambdas[0] * E_csg).mean()
-		eik_loss = (lambdas[1] * E_CP).mean()
-		cp_loss   = (lambdas[2] * E_eik).mean()
+		cp_loss = (lambdas[1] * E_CP).mean()
+		eik_loss   = (lambdas[2] * E_eik).mean()
 
 		loss = csg_loss + eik_loss + cp_loss
 
